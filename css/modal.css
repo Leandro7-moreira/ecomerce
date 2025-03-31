@@ -1,0 +1,229 @@
+/* Estilização do modal */
+.modal {
+    display: none; /* Inicialmente escondido */
+    position: fixed; /* Fixa o modal no viewport */
+    z-index: 2000; /* Coloca o modal acima de outros elementos */
+    left: 0; /* Posiciona à esquerda da tela */
+    top: 0; /* Posiciona no topo da tela */
+    width: 100%; /* Largura total do modal (100% da viewport) */
+    height: 100%; /* Altura total do modal (100% da viewport) */
+    overflow: auto; /* Habilita a rolagem se o conteúdo for grande */
+    background-color: rgba(255, 255, 255, 0.6); /* Fundo mais acessível */
+    color: rgb(250, 140, 178); /* Usa variável para cor do texto */
+}
+
+.modal-content {
+    background-color: transparent; /* Fundo do modal */
+    margin: 10% auto; /* Margem para centralizar o modal verticalmente */
+    padding: 20px; /* Espaçamento interno */
+    border: 1px solid var(--main-color); /* Usa variável para borda */
+    width: 90%; /* Largura de 90% da tela */
+    max-width: 400px; /* Largura máxima reduzida */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra mais sutil */
+    backdrop-filter: blur(20px); /* Fundo esfumaçado */
+}
+
+/* Estilo para o título do modal de login */
+.modal-body h2 {
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+/* Remove a borda preta no foco dos inputs em todos os modais */
+.modal input:focus {
+    border: 1px solid #F8BBD0; /* Define uma cor personalizada para a borda no foco */
+    outline: none; /* Remove o contorno preto padrão */
+    box-shadow: none; /* Remove qualquer sombra no foco */
+}
+
+/* Estilização do botão de fechar */
+.closeBtn {
+    color: #000; /* Cor do botão "X" de fechar */
+    float: right; /* Alinha o botão à direita */
+    font-size: 22px; /* Tamanho da fonte do botão de fechar */
+    font-weight: bold; /* Fonte em negrito */    
+}
+
+.closeBtn:hover, .closeBtn:focus {
+    color: #f8bbd0; /* Muda a cor para preto ao passar o mouse ou focar */
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+    cursor: pointer; /* Cursor muda para ponteiro ao passar o mouse */
+}
+
+/* Define o contêiner do conteúdo do modal */
+#resetPasswordModal .modal-content {
+    background-color: transparent; /* Fundo branco */
+    padding: 20px 30px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    width: 90%; /* Largura de 90% da tela */
+    max-width: 400px; /* Largura máxima para ajustar bem em várias telas */
+    max-height: 500px; /* Define uma altura máxima para limitar o comprimento */
+    box-shadow: 0px 4px 8px rgb(248, 187, 208); /* Sombra para destaque */
+    position: relative; /* Posiciona o botão de fechar em relação ao contêiner */
+    text-align: center; /* Centraliza o texto dentro do modal */
+}
+
+/* Estilos para o título do modal */
+#resetPasswordModal h2 {
+    font-size: 1.5em; /* Tamanho da fonte maior para o título */
+    margin-bottom: 10px; /* Espaçamento inferior */
+    color: #000; /* Cor do texto */
+}
+
+/* Estilos para o texto explicativo */
+#resetPasswordModal p {
+    font-size: 0.9em; /* Tamanho da fonte ligeiramente menor */
+    color: #000; /* Cor cinza para o texto */
+    margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+/* Estilos para os campos de entrada de email e senha */
+#resetPasswordModal input[type="email"], /* Campo de entrada de email no modal */
+#resetPasswordModal input[type="password"], /* Campo de entrada de senha no modal */
+.container .input-box input { /* Campos de entrada dentro do contêiner */
+    width: 100%; /* Largura total do campo */
+    padding: 12px; /* Espaçamento interno */
+    border: 1px solid #f8bbd0; /* Cor da borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 1em; /* Tamanho da fonte */
+    box-sizing: border-box; /* Inclui padding e borda no cálculo da largura */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transição suave para borda e sombra */
+}
+
+#resetPasswordModal input[type="email"]:focus,
+#resetPasswordModal input[type="password"]:focus {
+    border-color: var(--main-color); /* Usa variável para borda */
+    box-shadow: 0 0 5px var(--main-color); /* Destaque no foco */
+}
+
+/* Cor do texto de placeholder */
+#resetPasswordModal input[type="email"]::placeholder,
+#resetPasswordModal input[type="password"]::placeholder {
+    color: #aaaaaa81; /* Cor do placeholder em cinza claro */
+}
+
+/* Estilização do botão "Salvar" */
+#resetPasswordModal #savePasswordButton {
+    width: 100%; /* Preenche a largura do contêiner */
+    padding: 12px; /* Espaçamento interno */
+    background-color: #f8bbd0; /* Cor do botão, ajuste conforme sua paleta */
+    color: #ffffff; /* Cor do texto do botão */
+    font-size: 1em; /* Tamanho da fonte */
+    border: none; /* Remove bordas do botão */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Adiciona transição */
+}
+
+#resetPasswordModal #savePasswordButton:hover {
+    background-color: #f14d86; /* Cor mais escura ao passar o mouse */
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+/* Estilização do botão de fechar (X) */
+#resetPasswordModal .close {
+    position: absolute; /* Posiciona o botão dentro do contêiner */
+    top: 10px; /* Distância do topo */
+    right: 15px; /* Distância da direita */
+    font-size: 1.4em; /* Tamanho da fonte */
+    font-weight: bold; /* Texto em negrito */
+    color: #999; /* Cor cinza para o botão de fechar */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
+    transition: color 0.2s; /* Transição de cor ao passar o mouse */
+}
+
+#resetPasswordModal .close:hover {
+    color: #f14d86; /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilo do formulário */
+.form-container {
+    display: flex; /* Usa flexbox para alinhamento dos elementos */
+    flex-direction: column; /* Alinha os elementos em coluna */
+    gap: 15px; /* Espaçamento de 15px entre os elementos do formulário */
+}
+
+/* Estilização dos inputs com ícones */
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+input[type="text"], input[type="password"] {
+    width: calc(100% - 40px); /* Largura ajustada para incluir o ícone */
+    padding: 10px;
+    padding-left: 40px; /* Espaçamento à esquerda para ícone */
+    border: 1px solid #000; /* Borda dos inputs*/
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.815);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: var(--main-color); /* Usa variável para borda */
+    box-shadow: 0 0 5px var(--main-color); /* Destaque no foco */
+}
+
+/* Estilização dos ícones */
+.input-container i {
+    position: absolute;
+    left: 10px; /* Posição do ícone dentro do campo */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px; /* Tamanho do ícone */
+    color: #55b6db; /* Cor dos icones dentro do input*/
+    transition: color 0.3s ease; /* Transição suave */
+}
+
+.input-container i:hover {
+    color: var(--main-color); /* Cor no hover */
+}
+
+/* Estilização do botão de submit */
+button[type="submit"] {
+    width: 100%; /* Largura total do botão */
+    height: 50px; /* Altura do botão */
+    background-color: #F8BBD0; /* Cor de fundo */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    color: #ffffff; /* Cor do texto branco */
+    font-weight: 500; /* Fonte com peso médio */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Adiciona transição */
+}
+
+button[type="submit"]:hover {
+    background-color: #f34c86; /* Cor de fundo mais clara ao passar o mouse */
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+/* Estilo dos links */
+a {
+    color: #f78ab0; /* Cor azul claro para os links */
+    text-decoration: none; /* Remove o sublinhado dos links */
+    transition: color 0.3s ease; /* Transição suave */
+}
+
+a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+    color: var(--main-color); /* Usa variável para hover */
+}
+
+/* CSS para o contêiner de mensagem */
+.message-container {
+    display: none; /* Oculto inicialmente */
+    position: fixed; /* Manter visível ao rolar */
+    top: 50%; /* Centralizar verticalmente */
+    left: 50%; /* Centralizar horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para o centro */
+    background-color: rgba(255, 255, 255, 0.6); /* Fundo branco esfumado com mais opacidade */
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 30px; /* Aumentar espaçamento interno para altura maior */
+    text-align: center; /* Texto centralizado */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    box-shadow: 0 4px 8px rgb(248, 187, 208, 0.8); /* Sombra ao redor do modal */
+    backdrop-filter: blur(15px); /* Fundo esfumaçado */
+    width: 300px; /* Largura fixa para o contêiner */
+    font-weight: bold; /* Deixa o texto em negrito */
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../css/modal.css">
+
+    <title>Modal</title>
+
+</head>
+<body>
+     <!-- Modal de Redefinição de Senha -->
+     <div id="resetPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Redefinir Senha</h2>
+            <p>Preencha os campos abaixo para redefinir sua senha.</p>
+            <input type="email" id="email" placeholder="Digite seu e-mail" required>
+            <input type="email" id="confirmEmail" placeholder="Confirme seu e-mail" required>
+            <input type="password" id="newPassword" placeholder="Digite sua nova senha" required>
+            <input type="password" id="confirmNewPassword" placeholder="Confirme sua nova senha" required>
+            <button id="savePasswordButton">Salvar</button>
+        </div>
+    </div>
+
+    <script src="../js/modal.js"></script>
+
+</body>
+</html>

@@ -192,7 +192,8 @@ document.addEventListener("DOMContentLoaded", function() {
         forgotPasswordLink.innerText = 'Esqueci minha senha';
         forgotPasswordLink.addEventListener('click', function (event) {
             event.preventDefault(); // Impede o comportamento padrão do link
-            document.getElementById('resetPasswordModal').style.display = 'flex'; // Exibe o modal
+            document.getElementById('loginModal').style.display = 'none'; // Esconde o modal de login
+            document.getElementById('resetPasswordModal').style.display = 'flex'; // Exibe o modal de redefinição de senha
         });
 
         // Função para redefinição de senha
@@ -227,6 +228,12 @@ document.addEventListener("DOMContentLoaded", function() {
         alert('Sua senha foi redefinida com sucesso!');
         closeModal(); // Fecha o modal
     });
+
+    // Adiciona evento ao botão de fechar (X) no modal de redefinição de senha
+    const resetPasswordCloseBtn = document.querySelector('#resetPasswordModal .closeBtn');
+    if (resetPasswordCloseBtn) {
+        resetPasswordCloseBtn.addEventListener('click', closeModal);
+    }
 
         // Botão de login
         const loginButton = document.createElement('button');

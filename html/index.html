@@ -49,20 +49,30 @@
             
             <div id="modalContainer"></div> <!-- Container onde o modal será inserido -->
 
-            <!-- Modal de Redefinição de Senha -->
-            <div id="resetPasswordModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2>Redefinir Senha</h2>
-                    <p>Preencha os campos abaixo para redefinir sua senha.</p>
-                    <input type="email" id="email" placeholder="Digite seu e-mail" required>
-                    <input type="email" id="confirmEmail" placeholder="Confirme seu e-mail" required>
-                    <input type="password" id="newPassword" placeholder="Digite sua nova senha" required>
-                    <input type="password" id="confirmNewPassword" placeholder="Confirme sua nova senha" required>
-                    <button id="savePasswordButton">Salvar</button>
-                </div>
-            </div>
+           <!-- Referência ao modal de redefinição de senha -->
+           <div id="modalContainer"></div> <!-- Container onde o modal será inserido -->
+           <script>
+               fetch('../html/modal.html') // Caminho para o arquivo modal.html
+                   .then(response => {
+                       if (!response.ok) {
+                           throw new Error('Erro ao carregar o modal de redefinição de senha: ' + response.statusText);
+                       }
+                       return response.text();
+                   })
+                   .then(data => {
+                       const modalContainer = document.getElementById('modalContainer');
+                       modalContainer.innerHTML = data;
 
+                       // Certifique-se de que a funcionalidade do modal está inicializada
+                       const loginModal = modalContainer.querySelector('#loginModal');
+                       if (loginModal) {
+                           loginModal.addEventListener('show', () => {
+                               console.log('Modal de login exibido');
+                           });
+                       }
+                   })
+                   .catch(error => console.error('Erro ao carregar o modal de redefinição de senha:', error));
+           </script>
            
             <!-- Dropdown Menu -->
             <ul class="dropdown-menu">
@@ -153,7 +163,7 @@
                 .catch(error => console.error('Erro ao carregar o rodapé:', error));
         </script>
 
-        <button id="scrollToTopBtn" class="scroll-to-top">TOPO<!--<i class='bx bx-up-arrow-alt'></i>--></button>
+        <button id="scrollToTopBtn" class="scroll-to-top">TOPO</button>
 
 
     <script src="../js/modal.js"></script>
