@@ -517,14 +517,13 @@ body.modal-open .my_account_info:hover .dropdown-menu {
     cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
     border: none; /* Remove a borda padrão */
     box-shadow: 0 4px 6px #FF7043; /* Sombra do botão */ 
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transições suaves */
-    transition: opacity 0.4s ease, visibility 0.4s ease; /* Suave transição de 0.4 segundos */
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.3s ease; /* Transições suaves */
 }
 
 /* Efeito ao passar o mouse sobre o botão */
 .scroll-to-top:hover {
     background-color: #FF7043; /* Cor de fundo ao passar o mouse */
-    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
     box-shadow: 0 2px 4px rgba(255, 111, 67, 0.69); /* Sombra mais sutil ao passar o mouse */
     transition: opacity 0.5s ease; /* Transição suave na opacidade */
 }
@@ -545,18 +544,19 @@ body.modal-open .my_account_info:hover .dropdown-menu {
     width: 100%; /* Largura total do modal (100% da viewport) */
     height: 100%; /* Altura total do modal (100% da viewport) */
     overflow: auto; /* Habilita a rolagem se o conteúdo for grande */
-    color: #F8BBD0; /* Define a cor do texto dentro do modal*/
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo mais acessível */
+    color: var(--text-color); /* Usa variável para cor do texto */
 }
 
 .modal-content {
     background-color: transparent; /* Fundo do modal */
     margin: 10% auto; /* Margem para centralizar o modal verticalmente */
     padding: 20px; /* Espaçamento interno */
-    border: 1px solid #F8BBD0; /* Borda fina ao redor do modal */
+    border: 1px solid var(--main-color); /* Usa variável para borda */
     width: 90%; /* Largura de 90% da tela */
     max-width: 400px; /* Largura máxima reduzida */
     border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px #F8BBD0; /* Sombra ao redor do modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra mais sutil */
     backdrop-filter: blur(20px); /* Fundo esfumaçado */
 }
 
@@ -578,8 +578,7 @@ body.modal-open .my_account_info:hover .dropdown-menu {
     color: #000; /* Cor do botão "X" de fechar */
     float: right; /* Alinha o botão à direita */
     font-size: 22px; /* Tamanho da fonte do botão de fechar */
-    font-weight: bold; /* Fonte em negrito */
-    
+    font-weight: bold; /* Fonte em negrito */    
 }
 
 .closeBtn:hover, .closeBtn:focus {
@@ -617,14 +616,21 @@ body.modal-open .my_account_info:hover .dropdown-menu {
 
 /* Estilos para os campos de entrada de email e senha */
 #resetPasswordModal input[type="email"],
-#resetPasswordModal input[type="password"] {
-    width: 100%; /* Preenche a largura do contêiner */
-    padding: 12px; /* Espaçamento interno */
-    margin-bottom: 15px; /* Espaçamento inferior */
-    border: 1px solid #f8bbd0; /* Borda suave ao redor do campo */
-    border-radius: 5px; /* Bordas arredondadas */
-    font-size: 1em; /* Tamanho da fonte padrão */
-    box-sizing: border-box; /* Inclui o padding na largura total */
+#resetPasswordModal input[type="password"],
+.container .input-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #f8bbd0;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#resetPasswordModal input[type="email"]:focus,
+#resetPasswordModal input[type="password"]:focus {
+    border-color: var(--main-color); /* Usa variável para borda */
+    box-shadow: 0 0 5px var(--main-color); /* Destaque no foco */
 }
 
 /* Cor do texto de placeholder */
@@ -643,12 +649,12 @@ body.modal-open .my_account_info:hover .dropdown-menu {
     border: none; /* Remove bordas do botão */
     border-radius: 5px; /* Bordas arredondadas */
     cursor: pointer; /* Cursor de mão ao passar o mouse */
-    transition: background-color 0.3s; /* Transição suave ao passar o mouse */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Adiciona transição */
 }
 
-/* Efeito de hover no botão "Salvar" */
 #resetPasswordModal #savePasswordButton:hover {
     background-color: #f14d86; /* Cor mais escura ao passar o mouse */
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
 }
 
 /* Estilização do botão de fechar (X) */
@@ -663,7 +669,6 @@ body.modal-open .my_account_info:hover .dropdown-menu {
     transition: color 0.2s; /* Transição de cor ao passar o mouse */
 }
 
-/* Efeito de hover no botão de fechar (X) */
 #resetPasswordModal .close:hover {
     color: #f14d86; /* Cor mais escura ao passar o mouse */
 }
@@ -688,6 +693,12 @@ input[type="text"], input[type="password"] {
     border: 1px solid #000; /* Borda dos inputs*/
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.815);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: var(--main-color); /* Usa variável para borda */
+    box-shadow: 0 0 5px var(--main-color); /* Destaque no foco */
 }
 
 /* Estilização dos ícones */
@@ -698,6 +709,11 @@ input[type="text"], input[type="password"] {
     transform: translateY(-50%);
     font-size: 20px; /* Tamanho do ícone */
     color: #55b6db; /* Cor dos icones dentro do input*/
+    transition: color 0.3s ease; /* Transição suave */
+}
+
+.input-container i:hover {
+    color: var(--main-color); /* Cor no hover */
 }
 
 /* Estilização do botão de submit */
@@ -710,20 +726,24 @@ button[type="submit"] {
     color: #ffffff; /* Cor do texto branco */
     font-weight: 500; /* Fonte com peso médio */
     cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Adiciona transição */
 }
 
 button[type="submit"]:hover {
     background-color: #f34c86; /* Cor de fundo mais clara ao passar o mouse */
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
 }
 
 /* Estilo dos links */
 a {
     color: #f78ab0; /* Cor azul claro para os links */
     text-decoration: none; /* Remove o sublinhado dos links */
+    transition: color 0.3s ease; /* Transição suave */
 }
 
 a:hover {
     text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+    color: var(--main-color); /* Usa variável para hover */
 }
 
 /* CSS para o contêiner de mensagem */
@@ -943,6 +963,11 @@ a:hover {
     .nav-manual {
         bottom: 10px;
         transform: translateX(-50%);
+    }
+
+    .modal-content {
+        margin: 20% auto;
+        width: 95%;
     }
 }
 
