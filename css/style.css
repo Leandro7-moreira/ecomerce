@@ -476,68 +476,7 @@ body.modal-open .my_account_info:hover .dropdown-menu {
     gap: 15px;
 }
 
-/* Seção de pagamento do rodapé */
-.pagamento {
-    background-color: #E0F7FA; /* Define a cor de fundo da seção de pagamento */
-    padding: 20px; /* Adiciona espaço interno (padding) em torno do conteúdo da seção */
-    border-radius: 5px; /* Arredonda os cantos da seção */
-    margin-right: 400px; /* Adiciona espaço à direita da seção de pagamento */
-}
 
-.pagamento .titulo {
-    font-size: 1.5rem; /* Define o tamanho da fonte do título na seção de pagamento */
-    margin-bottom: 15px; /* Adiciona espaço abaixo do título */
-}
-
-.bandeiras-pagamento {
-    list-style: none; /* Remove os marcadores de lista */
-    padding: 0; /* Remove o padding padrão da lista */
-    margin: 0; /* Remove a margem padrão da lista */
-    display: flex; /* Exibe os itens da lista como um flexbox */
-    gap: 10px; /* Define o espaço entre os itens da lista */
-}
-
-.icone-pagamento {
-    font-size: 2rem; /* Define o tamanho da fonte dos ícones de pagamento */
-    color: #333; /* Define a cor dos ícones de pagamento */
-}
-
-.gateways-rodape {
-    list-style: none; /* Remove os marcadores de lista */
-    padding: 0; /* Remove o padding padrão da lista */
-    margin: 15px 0 0; /* Adiciona margem superior e remove margens laterais/inferiores */
-    display: flex; /* Exibe os itens da lista como um flexbox */
-    gap: 10px; /* Define o espaço entre os itens da lista */
-}
-
-.gateways-rodape img {
-    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
-    height: auto; /* Mantém a proporção da altura da imagem */
-}
-
-/* Seção de selos */
-.selos {
-    background-color: #E0F7FA; /* Define a cor de fundo da seção de selos */
-    padding: 20px; /* Adiciona espaço interno (padding) em torno do conteúdo da seção */
-    border-radius: 5px; /* Arredonda os cantos da seção */
-    margin-left: 20px; /* Adiciona espaço à esquerda da seção de selos */
-}
-
-.selos .titulo {
-    font-size: 1.5rem; /* Define o tamanho da fonte do título na seção de selos */
-    margin-bottom: 15px; /* Adiciona espaço abaixo do título */
-}
-
-.selos ul {
-    list-style: none; /* Remove os marcadores de lista */
-    padding: 0; /* Remove o padding padrão da lista */
-    margin: 0; /* Remove a margem padrão da lista */
-}
-
-.selos img {
-    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
-    height: auto; /* Mantém a proporção da altura da imagem */
-}
 
 /* Estilização para o botão de rolar para o topo */
 .scroll-to-top {
