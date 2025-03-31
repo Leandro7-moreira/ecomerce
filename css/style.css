@@ -250,6 +250,44 @@ body.modal-open .my_account_info:hover .dropdown-menu {
     transition: transform 0.3s ease; /* Transição suave de elevação */
 }
 
+.produto-imagens { 
+    position: relative; /* Define o posicionamento relativo para permitir a posição absoluta dos botões */
+    display: flex; /* Usa flexbox para centralizar a imagem dentro do contêiner */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    justify-content: center; /* Alinha os itens horizontalmente ao centro */
+    width: 100%; /* Define a largura total do contêiner */
+    height: 400px; /* Define uma altura fixa, ajuste conforme necessário */
+    overflow: hidden; /* Oculta qualquer conteúdo que ultrapasse os limites do contêiner */
+}
+
+.produto-imagens img { 
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    max-height: 100%; /* Garante que a imagem não ultrapasse a altura do contêiner */
+    object-fit: contain; /* Mantém a proporção da imagem sem cortar partes */
+    transition: opacity 0.3s ease-in-out; /* Efeito suave na opacidade ao trocar a imagem */
+}
+
+.produto-imagens button { 
+    position: absolute; /* Posiciona os botões sobre as imagens */
+    top: 50%; /* Centraliza os botões verticalmente */
+    transform: translateY(-50%); /* Ajusta o alinhamento exato ao centro */
+    background-color: transparent; /* Fundo transparente */
+    color: #000; /* Cor do texto dos botões */
+    border: none; /* Remove a borda padrão */
+    padding: 8px; /* Adiciona espaçamento interno para facilitar o clique */
+    cursor: pointer; /* Transforma o cursor em ponteiro ao passar sobre o botão */
+    z-index: 10; /* Garante que os botões fiquem acima da imagem */
+    border-radius: 50%; /* Deixa os botões redondos */
+}
+
+.produto-imagens .prev-btn { 
+    left: 35px; /* Posiciona o botão 'Anterior' à esquerda, quanto maior maois próximo */
+}
+
+.produto-imagens .next-btn { 
+    right: 35px; /* Posiciona o botão 'Próximo' à direita, quanto maior maois próximo */
+}
+
 /* Quem Somos */
 .quem-somos {
     padding: 100px 8%; /* Espaçamento interno superior e inferior de 100px e laterais de 8% */
