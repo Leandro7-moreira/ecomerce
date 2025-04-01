@@ -41,9 +41,10 @@
                     <div class="input-group pequeno">
                         <label for="genero">Gênero *</label>
                         <select id="genero" name="genero" required>
+                            <option value="" disabled selected>Selecione seu gênero</option>
+                            <option value="Não informado">Não informado</option>
                             <option value="Masculino">Masculino</option>
                             <option value="Feminino">Feminino</option>
-                            <option value="Outro">Outro</option>
                         </select>
                     </div>
                 </div>
@@ -89,6 +90,16 @@
                         <label for="cep">CEP *</label>
                         <input type="text" id="cep" name="cep" placeholder="Digite seu CEP" required>
                     </div>
+
+                    <div class="input-group">
+                        <label for="cidade">Cidade *</label>
+                        <input type="text" id="cidade" name="cidade" placeholder="Digite sua cidade" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="complemento">Complemento</label>
+                        <input type="text" id="complemento" name="complemento" placeholder="Digite o complemento (opcional)">
+                    </div>
                 </div>
 
                 <h3>Cartão de Crédito</h3>
@@ -103,8 +114,8 @@
                 <div class="form-group">
                     <div class="input-group">
                         <label for="vencimentoCartao">Vencimento do Cartão:</label>
-                        <input type="date" id="vencimentoCartao" name="vencimentoCartao" placeholder="MM/AA">
-                    </div>
+                        <input type="date" id="vencimentoCartao" name="vencimentoCartao" required placeholder="MM/YY">
+                    </div>                    
 
                     <div class="input-group pequeno">
                         <label for="cvv">CVV *</label>
@@ -120,18 +131,13 @@
 
         <div class="form-section">
 
-            <h3>Alterar Senha</h3>
+            <h3>Senha</h3>
 
             <form id="senhaForm">
 
                 <div class="form-group">
                     <div class="input-group">
-                        <label for="senhaAtual">Senha atual *</label>
-                        <input type="password" id="senhaAtual" name="senhaAtual" placeholder="Digite sua senha atual" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="novaSenha">Nova senha *</label>
+                        <label for="novaSenha">Senha *</label>
                         <input type="password" id="novaSenha" name="novaSenha" placeholder="Digite sua nova senha" required>
                     </div>
 

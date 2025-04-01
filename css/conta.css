@@ -80,7 +80,7 @@ input:focus, select:focus {
 
 /* Estilo dos inputs de senha 
    Aplica o mesmo espaçamento entre "Digite sua senha", "Nova senha" e "Confirme sua senha" */
-#senhaAtual, #novaSenha, #confirmarSenha {
+#novaSenha, #confirmarSenha {
     margin-bottom: 20px; /* Mantém o espaçamento entre os inputs de senha e o salvar*/
 }
 
