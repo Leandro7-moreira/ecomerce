@@ -3,6 +3,11 @@ from flask_cors import CORS
 import mysql.connector
 from bcrypt import hashpw, gensalt, checkpw
 from database import conectar  # Certifique-se de que você está importando a função correta
+from reportlab.pdfgen import canvas  # Importa para geração de PDFs
+from email.mime.multipart import MIMEMultipart  # Importa para envio de e-mails
+from email.mime.base import MIMEBase  # Importa para anexar arquivos
+from email import encoders  # Importa para codificar anexos
+import smtplib  # Importa para envio de e-mails
 
 app = Flask(__name__)
 CORS(app)  # Habilita o CORS para todas as origens
@@ -141,6 +146,56 @@ def delete_item(index):
 def get_total():
     total = sum(item['preco'] * item['quantidade'] for item in carrinho)
     return jsonify({'total': total}), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+@app.route('/api/confirmarPagamento', methods=['POST'])
+def confirmar_pagamento():
+    data = request.json
+    order_id = data.get('order_id')
+    email = data.get('email')
+
+    # Simula a confirmação do pagamento
+    if not order_id or not email:
+        return jsonify({'success': False, 'message': 'Dados inválidos.'}), 400
+
+    # Gera o PDF da NF
+    pdf_path = f'nota_fiscal_{order_id}.pdf'
+    c = canvas.Canvas(pdf_path)
+    c.drawString(100, 750, f"Nota Fiscal - Pedido #{order_id}")
+    c.drawString(100, 730, f"Cliente: {email}")
+    c.save()
+
+    # Envia o PDF por e-mail
+    try:
+        enviar_email(email, pdf_path)
+        return jsonify({'success': True, 'message': 'NF gerada e enviada com sucesso.'})
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)}), 500
+
+def enviar_email(destinatario, pdf_path):
+    remetente = "suaempresa@exemplo.com"
+    senha = "sua_senha"
+
+    msg = MIMEMultipart()
+    msg['From'] = remetente
+    msg['To'] = destinatario
+    msg['Subject'] = "Sua Nota Fiscal"
+
+    # Anexa o PDF
+    with open(pdf_path, 'rb') as f:
+        part = MIMEBase('application', 'octet-stream')
+        part.set_payload(f.read())
+        encoders.encode_base64(part)
+        part.add_header('Content-Disposition', f'attachment; filename={pdf_path}')
+        msg.attach(part)
+
+    # Envia o e-mail
+    with smtplib.SMTP('smtp.gmail.com', 587) as server:
+        server.starttls()
+        server.login(remetente, senha)
+        server.send_message(msg)
 
 if __name__ == '__main__':
     app.run(debug=True)

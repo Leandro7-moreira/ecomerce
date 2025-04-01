@@ -40,6 +40,38 @@ function getInvoiceUrl() {
         });
 }
 
+// Função para confirmar o pagamento e gerar a NF
+function confirmarPagamento(orderId, emailCliente) {
+    // Dados a serem enviados para o back-end
+    const dadosPagamento = {
+        order_id: orderId,
+        email: emailCliente
+    };
+
+    // Envia a solicitação para o back-end
+    fetch('http://localhost:5000/api/confirmarPagamento', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dadosPagamento)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Pagamento confirmado e NF gerada com sucesso!');
+            alert('Nota Fiscal gerada e enviada para o e-mail do cliente.');
+        } else {
+            console.error('Erro ao confirmar pagamento ou gerar NF:', data.message);
+            alert('Erro ao gerar a Nota Fiscal. Tente novamente.');
+        }
+    })
+    .catch(error => {
+        console.error('Erro de rede:', error);
+        alert('Erro ao processar a solicitação. Verifique sua conexão e tente novamente.');
+    });
+}
+
 // Exemplo de como utilizar as funções
 const inputFile = document.querySelector('#invoiceFileInput'); // Selecionando o input de arquivo
 const orderId = 12345; // Exemplo de ID do pedido
@@ -54,3 +86,11 @@ inputFile.addEventListener('change', (event) => {
 
 // Você pode também chamar a função para obter a URL da NF-e
 getInvoiceUrl();
+
+// Exemplo de como usar a função
+const emailCliente = 'cliente@exemplo.com'; // E-mail do cliente (exemplo)
+
+// Simula a confirmação do pagamento e a geração da NF
+document.querySelector('#confirmarPagamentoBtn').addEventListener('click', () => {
+    confirmarPagamento(orderId, emailCliente);
+});
