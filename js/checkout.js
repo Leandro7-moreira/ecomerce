@@ -93,8 +93,8 @@ function carregarInformacoesDoCarrinho() {
 async function enviarDadosParaServidor() {
     const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
     const subtotal = localStorage.getItem('subtotal') || 0;
-    const endereco = document.getElementById('confirmation-address').textContent;
-    const metodoPagamento = localStorage.getItem('metodoPagamento');
+    const endereco = localStorage.getItem('endereco') || 'Endereço não informado';
+    const metodoPagamento = localStorage.getItem('metodoPagamento') || 'Não informado';
 
     const payload = {
         carrinho,
@@ -140,6 +140,7 @@ function carregarEndereco() {
     .then(data => {
         if (data.endereco) {
             document.getElementById('registered-address').textContent = data.endereco;
+            localStorage.setItem('endereco', data.endereco); // Salva o endereço no localStorage
         } else {
             document.getElementById('registered-address').textContent = 'Nenhum endereço cadastrado.';
         }
@@ -343,14 +344,14 @@ function copyPix() {
 
     // Atualiza a confirmação
 function atualizarConfirmacao() {
-    // Recupera o carrinho do localStorage
+// Recupera o carrinho do localStorage
     const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
     const produtosList = document.getElementById('final-products-list');
     const enderecoSalvo = localStorage.getItem('endereco');
     const metodoPagamento = localStorage.getItem('metodoPagamento');
     const subtotal = localStorage.getItem('subtotal');
 
-    // Limpa a lista de produtos para garantir que será preenchida corretamente
+    // Limpa a lista de produtos
     produtosList.innerHTML = '';
 
     if (carrinho.length === 0) {
@@ -373,47 +374,20 @@ function atualizarConfirmacao() {
 
             produtosList.appendChild(produtoDiv);
         });
-
-        // Envia os dados para o backend Flask
-        const data = {
-            carrinho: carrinho,
-            subtotal: subtotal,
-            endereco: enderecoSalvo,
-            metodoPagamento: metodoPagamento
-        };
-
-        fetch('/atualizar_confirmacao', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);  // Exibe a mensagem de sucesso ou erro
-        })
-        .catch(error => {
-            console.error('Erro ao enviar os dados para o servidor:', error);
-        });
     }
-    
-        // Exibe o endereço salvo (ou um padrão, caso não tenha sido informado)
-        const confirmationAddress = document.getElementById('confirmation-address');
-        confirmationAddress.textContent = enderecoSalvo || 'Endereço não informado.';
-    
-        // Exibe o método de pagamento
-        const confirmationPayment = document.getElementById('confirmation-payment');
-        if (metodoPagamento) {
-            confirmationPayment.textContent = metodoPagamento === 'cartao' ? 'Cartão de Crédito/Débito' : 'Pix';
-        } else {
-            confirmationPayment.textContent = 'Método de pagamento não selecionado.';
-        }
-    
-        // Atualiza o total
-        const finalTotalPrice = document.getElementById('final-total-price');
-        finalTotalPrice.textContent = subtotal || '0.00';
-    }
+
+    // Atualiza o endereço
+    const confirmationAddress = document.getElementById('confirmation-address');
+    confirmationAddress.textContent = enderecoSalvo || 'Endereço não informado.';
+
+    // Atualiza o método de pagamento
+    const confirmationPayment = document.getElementById('confirmation-payment');
+    confirmationPayment.textContent = metodoPagamento === 'cartao' ? 'Cartão de Crédito/Débito' : 'Pix';
+
+    // Atualiza o total
+    const finalTotalPrice = document.getElementById('final-total-price');
+    finalTotalPrice.textContent = subtotal || '0.00';
+}
     
     // Envia as informações para o backend Flask
 const data = {
@@ -573,4 +547,32 @@ function finalizarCompra() {
     .catch(error => {
         console.error('Erro ao enviar a NF-e:', error);
     });
+}
+
+// Função para salvar o endereço
+function salvarEndereco() {
+    const newAddressCheckbox = document.getElementById('new-address');
+    let endereco;
+
+    if (newAddressCheckbox && newAddressCheckbox.checked) {
+        const rua = document.getElementById('rua').value;
+        const numero = document.getElementById('numero').value;
+        const bairro = document.getElementById('bairro').value;
+        const cep = document.getElementById('cep').value;
+        const cidade = document.getElementById('cidade').value;
+
+        endereco = `Rua: ${rua}, Número: ${numero}, Bairro: ${bairro}, CEP: ${cep}, Cidade: ${cidade}`;
+    } else {
+        endereco = localStorage.getItem('endereco') || 'Endereço não informado';
+    }
+
+    localStorage.setItem('endereco', endereco);
+}
+
+// Função para salvar o método de pagamento
+function salvarMetodoPagamento() {
+    const metodoPagamento = document.querySelector('input[name="payment"]:checked')?.id;
+    if (metodoPagamento) {
+        localStorage.setItem('metodoPagamento', metodoPagamento);
+    }
 }
