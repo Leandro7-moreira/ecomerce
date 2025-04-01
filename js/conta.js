@@ -102,36 +102,47 @@ document.getElementById('cadastroForm').addEventListener('submit', function (e) 
 document.getElementById('senhaForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const senha = document.getElementById('senha').value;
-    const confirmarSenha = document.getElementById('confirmarSenha').value;
-    const email = document.getElementById('email').value;  // Supondo que o email também seja enviado
+    const senha = document.getElementById('senha').value.trim();
+    const confirmarSenha = document.getElementById('confirmarSenha').value.trim();
+    const email = document.getElementById('email').value.trim(); // Supondo que o email também seja enviado
 
-    // Verifica se as senhas são iguais
-    if (senha === confirmarSenha) {
-        const dadosSenha = {
-            senha: senha,
-            email: email
-        };
-
-        // Envia os dados para o backend Flask
-        fetch('/alterar_senha', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dadosSenha)
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);  // Exibe a resposta do backend (sucesso ou erro)
-        })
-        .catch(error => {
-            console.error('Erro:', error);  // Trata qualquer erro
-            alert('Ocorreu um erro ao alterar a senha.');
-        });
-    } else {
-        alert('As senhas não coincidem!');
+    // Validação de senha
+    if (senha.length < 6) {
+        alert('A senha deve ter pelo menos 6 caracteres.');
+        return;
     }
+
+    if (senha !== confirmarSenha) {
+        alert('As senhas não coincidem!');
+        return;
+    }
+
+    const dadosSenha = {
+        senha: senha,
+        email: email
+    };
+
+    // Envia os dados para o backend Flask
+    fetch('/alterar_senha', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dadosSenha)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro na resposta do servidor.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert(data.message); // Exibe a resposta do backend (sucesso ou erro)
+    })
+    .catch(error => {
+        console.error('Erro:', error); // Trata qualquer erro
+        alert('Ocorreu um erro ao alterar a senha. Tente novamente mais tarde.');
+    });
 });
 
 // Formulário de Endereço
