@@ -54,7 +54,7 @@
                     <div class="input-box">
                         <label for="password">Senha</label>
                         <div class="password-container">
-                            <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+                            <input id="password" type="password" name="password" placeholder="Digite sua senha" required minlength="8" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[@#$%^&+=]).{8,}" title="A senha deve ter no mínimo 8 caracteres, incluindo letras, números e caracteres especiais.">
                             <span class="toggle-password" onclick="togglePassword('password')"><i class="fas fa-eye-slash"></i></span> <!-- Olho fechado -->
                         </div>
                     </div>
@@ -62,10 +62,10 @@
                     <div class="input-box">
                         <label for="confirm-password">Confirmar Senha</label>
                         <div class="password-container">
-                            <input id="confirm-password" type="password" name="confirm-password" placeholder="Confirme sua senha" required>
+                            <input id="confirm-password" type="password" name="confirm-password" placeholder="Confirme sua senha" required minlength="8" pattern="(?=.*\d)(?=.*[a-zA-Z])(?=.*[@#$%^&+=]).{8,}" title="A senha deve ter no mínimo 8 caracteres, incluindo letras, números e caracteres especiais.">
                             <span class="toggle-password" onclick="togglePassword('confirm-password')"><i class="fas fa-eye-slash"></i></span> <!-- Olho fechado -->
                         </div>
-                    </div>                    
+                    </div>
                    
                 </div>
 

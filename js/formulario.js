@@ -81,6 +81,30 @@ function togglePassword(inputId) {
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form'); // Seleciona o formulário
     if (form) {
-        form.addEventListener('submit', validateForm); // Adiciona a validação ao evento de envio
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const senha = document.getElementById('password').value.trim();
+            const confirmarSenha = document.getElementById('confirm-password').value.trim();
+
+            // Regex para validar a senha
+            const senhaRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[@#$%^&+=]).{8,}$/;
+
+            // Validação de senha
+            if (!senhaRegex.test(senha)) {
+                alert('A senha deve ter no mínimo 8 caracteres, incluindo letras, números e caracteres especiais.');
+                return;
+            }
+
+            // Verificar se as senhas coincidem
+            if (senha !== confirmarSenha) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+
+            // Se todas as validações passarem
+            alert('Formulário enviado com sucesso!');
+            this.submit(); // Envia o formulário
+        });
     }
 });
