@@ -7,6 +7,8 @@
     <title>Cadastro</title>
 
     <link rel="stylesheet" href="../css/conta.css">
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 </head>
 <body>
@@ -61,10 +63,6 @@
                     </div>
                 </div>
 
-                <div class="continue-button">
-                    <button type="submit">Salvar</button>
-                </div>
-
                 <h3>Endereço de Cadastro</h3>
 
                 <div class="form-group">
@@ -114,7 +112,7 @@
                 <div class="form-group">
                     <div class="input-group">
                         <label for="vencimentoCartao">Vencimento do Cartão:</label>
-                        <input type="date" id="vencimentoCartao" name="vencimentoCartao" required placeholder="MM/YY">
+                        <input type="text" id="vencimentoCartao" name="vencimentoCartao" required placeholder="MM/YY">
                     </div>                    
 
                     <div class="input-group pequeno">
@@ -123,9 +121,6 @@
                     </div>
                 </div>
 
-                <div class="continue-button">
-                    <button type="submit">Salvar</button>
-                </div>
             </form>
         </div>
 
@@ -156,6 +151,10 @@
     </div>
 
     <script src="../js/conta.js"></script>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>
 
 </body>
 </html>

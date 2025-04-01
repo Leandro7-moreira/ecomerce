@@ -63,7 +63,7 @@ input, select {
     width: 80%; /* Tamanho dos inputs */
     padding: 8px; /* Espaçamento interno do input */
     border-radius: 5px; /* Cantos arredondados */
-    border: 1px solid #F8BBD0; /* Borda cinza clara */
+    border: 1px solid #F8BBD0; /* Borda */
     font-size: 1rem; /* Tamanho da fonte dos inputs */
     background-color: #f9f9f9; /* Fundo dos inputs */
 }
@@ -73,8 +73,8 @@ input::placeholder {
 }
 
 input:focus, select:focus {
-    border-color: #F8BBD0; /* Borda azul quando o input está focado */
-    box-shadow: 5px 5px 5px rgb(248, 187, 208, 0.8); /* Sombra azul quando o input está focado */
+    border-color: #F8BBD0; /* Borda quando o input está focado */
+    box-shadow: 5px 5px 5px rgb(248, 187, 208, 0.8); /* Sombra quando o input está focado */
     outline: none; /* Remove a borda azul extra ao focar */
 }
 
@@ -85,7 +85,7 @@ input:focus, select:focus {
 }
 
 /* Botão de envio 
-   Centraliza o botão e aplica estilo azul */
+   Centraliza o botão e aplica estilo */
 .continue-button {
     text-align: center; /* Centraliza o botão */
     margin-top: 20px; /* Espaçamento superior para separar o botao salvar do cpf */
@@ -94,7 +94,7 @@ input:focus, select:focus {
 .continue-button button {
     width: 100%; /* O botão ocupa toda a largura do contêiner */
     padding: 15px 0; /* Aumenta o tamanho do botão verticalmente */
-    background-color: #F8BBD0; /* Cor de fundo azul */
+    background-color: #F8BBD0; /* Cor de fundo  */
     color: #ffffff; /* Texto branco */
     border: none; /* Remove a borda padrão */
     border-radius: 5px; /* Cantos arredondados */
@@ -104,7 +104,7 @@ input:focus, select:focus {
 }
 
 .continue-button button:hover {
-    background-color: rgb(248, 187, 208, 0.5); /* Cor de fundo azul escuro ao passar o mouse */
+    background-color: rgba(243, 113, 158, 0.9); /* Cor de fundo ao passar o mouse */
 }
 
 /* Estilo para o campo de data de nascimento e vencimento do cartão */
@@ -112,12 +112,89 @@ input[type="date"] {
     width: 100%; /* O input ocupa toda a largura disponível */
     padding: 8px; /* Espaçamento interno */
     border-radius: 5px; /* Cantos arredondados */
-    border: 1px solid #F8BBD0; /* Borda cinza clara */
+    border: 1px solid #F8BBD0; /* Borda */
     font-size: 1rem; /* Tamanho da fonte */
     background-color: #f9f9f9; /* Fundo do input */
 }
 
 input[type="date"]:focus {
-    border-color: #F8BBD0; /* Borda azul ao focar */
+    border-color: #F8BBD0; /* Borda ao focar */
     box-shadow: 5px 5px 5px rgb(248, 187, 208, 0.5); /* Sombra azul ao focar */
+}
+
+/* Ajusta o tamanho do input 
+    Define o estilo do campo de vencimento do cartão para ocupar toda a largura disponível, 
+    centraliza o texto e harmoniza com o restante do design */
+#vencimentoCartao {
+     width: 100%; /* O input ocupa toda a largura disponível */
+     padding: 10px; /* Espaçamento interno */
+     font-size: 16px; /* Tamanho da fonte */
+     text-align: center; /* Centraliza o texto */
+     border: 1px solid #F8BBD0; /* Harmoniza a borda com o restante do design */
+     border-radius: 5px; /* Cantos arredondados */
+     outline: none; /* Remove o contorno padrão */
+     background-color: #f9f9f9; /* Fundo consistente com outros inputs */
+     transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+}
+
+/* Estilo ao focar no input 
+    Altera a borda e adiciona sombra ao focar no campo */
+#vencimentoCartao:focus {
+     border-color: #F8BBD0; /* Cor de borda ao focar */
+     box-shadow: 5px 5px 5px rgb(248, 187, 208, 0.5); /* Sombra ao focar */
+}
+
+/* Personaliza o calendário do Flatpickr 
+    Define o estilo geral do calendário, com fundo branco, bordas arredondadas e sombra */
+.flatpickr-calendar {
+     background-color: #ffffff; /* Fundo branco */
+     border-radius: 8px; /* Bordas arredondadas */
+     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar o calendário */
+     font-family: 'Poppins', sans-serif; /* Fonte consistente com o design */
+}
+
+/* Ajusta o layout dos meses para uma grade 
+    Organiza os meses em uma grade de 3 colunas */
+.flatpickr-monthSelect-months {
+     display: grid !important; /* Força o uso de grid */
+     grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+     gap: 10px; /* Espaçamento entre os meses */
+}
+
+/* Estiliza cada botão de mês 
+    Define o estilo dos meses com padding, bordas arredondadas e transições suaves */
+.flatpickr-monthSelect-month {
+     padding: 8px; /* Espaçamento interno */
+     font-size: 14px; /* Tamanho da fonte */
+     border-radius: 5px; /* Cantos arredondados */
+     cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+     transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
+}
+
+/* Estilo ao passar o mouse sobre os meses 
+    Altera a cor de fundo e do texto ao passar o mouse */
+.flatpickr-monthSelect-month:hover {
+     background-color: rgb(248, 187, 208, 0.5); /* Fundo rosa claro */
+     color: #ffffff; /* Texto branco ao passar o mouse */
+}
+
+/* Estiliza os anos 
+    Define o estilo dos anos com tamanho de fonte e cor consistentes */
+.flatpickr-monthSelect-years {
+     font-size: 14px; /* Tamanho da fonte */
+     padding: 5px; /* Espaçamento interno */
+     color: #333; /* Cor consistente com o design */
+}
+
+/* Muda a cor do botão de navegação 
+    Define a cor dos botões de navegação para harmonizar com o esquema de cores */
+.flatpickr-prev-month, .flatpickr-next-month {
+     color: #F8BBD0 !important; /* Cor rosa claro */
+     transition: color 0.3s ease; /* Transição suave */
+}
+
+/* Estilo ao passar o mouse sobre os botões de navegação 
+    Altera a cor dos botões para uma tonalidade mais intensa */
+.flatpickr-prev-month:hover, .flatpickr-next-month:hover {
+     color: rgb(248, 187, 208, 0.8) !important; /* Cor mais intensa ao passar o mouse */
 }
