@@ -119,36 +119,77 @@ def delete_usuario(id):
         if 'conn' in locals():
             conn.close()
 
+# Endpoint para alterar senha
+@app.route('/alterar_senha', methods=['POST'])
+def alterar_senha():
+    data = request.json
+    email = data.get('email')
+    nova_senha = data.get('senha')
+
+    if not email or not nova_senha:
+        return jsonify({"message": "Email e nova senha são obrigatórios!"}), 400
+
+    conn = conectar()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE usuarios SET senha = %s WHERE email = %s", (nova_senha, email))
+    conn.commit()
+
+    if cursor.rowcount == 0:
+        return jsonify({"message": "Usuário não encontrado!"}), 404
+
+    return jsonify({"message": "Senha alterada com sucesso!"}), 200
+
 # Funcionalidades do carrinho
-carrinho = []
+carrinho = [
+    {"nome": "Produto 1", "preco": 100.00, "quantidade": 2, "imagem": "url_da_imagem"},
+    {"nome": "Produto 2", "preco": 50.00, "quantidade": 1, "imagem": "url_da_imagem"}
+]
+endereco_cliente = "Rua Exemplo, 123, Bairro Exemplo, Cidade Exemplo, CEP 12345-678"
 
 @app.route('/api/carrinho', methods=['GET'])
 def get_carrinho():
     return jsonify(carrinho), 200
 
-@app.route('/api/carrinho', methods=['POST'])
-def add_to_carrinho():
-    item = request.json
-    if not item.get('nome') or not item.get('preco') or not item.get('quantidade'):
-        return jsonify({'error': 'Todos os campos (nome, preço, quantidade) são obrigatórios!'}), 400
+@app.route('/api/carregar-endereco', methods=['GET'])
+def carregar_endereco():
+    return jsonify({"endereco": endereco_cliente}), 200
 
-    carrinho.append(item)
-    return jsonify({'message': 'Item adicionado ao carrinho', 'carrinho': carrinho}), 201
+@app.route('/api/finalizar-pedido', methods=['POST'])
+def finalizar_pedido():
+    data = request.json
+    print("Pedido recebido:", data)
+    return jsonify({"success": True, "message": "Pedido finalizado com sucesso!", "pedidoId": 12345}), 200
 
-@app.route('/api/carrinho/<int:index>', methods=['DELETE'])
-def delete_item(index):
-    if 0 <= index < len(carrinho):
-        removido = carrinho.pop(index)
-        return jsonify({'message': 'Item removido', 'item': removido, 'carrinho': carrinho}), 200
-    return jsonify({'error': 'Índice inválido'}), 400
+@app.route('/processar_pagamento', methods=['POST'])
+def processar_pagamento():
+    data = request.json
+    print("Dados do pagamento:", data)
+    return jsonify({"sucesso": True, "message": "Pagamento processado com sucesso!"}), 200
+
+@app.route('/atualizar_confirmacao', methods=['POST'])
+def atualizar_confirmacao():
+    data = request.json
+    print("Confirmação recebida:", data)
+    return jsonify({"message": "Confirmação atualizada com sucesso!"}), 200
+
+@app.route('/save_pix_key', methods=['POST'])
+def save_pix_key():
+    data = request.json
+    print("Chave Pix recebida:", data)
+    return jsonify({"message": "Chave Pix salva com sucesso!"}), 200
+
+@app.route('/api/upload-nfe', methods=['POST'])
+def upload_nfe():
+    if 'nfe' not in request.files:
+        return jsonify({"error": "Arquivo não enviado."}), 400
+    file = request.files['nfe']
+    file.save(f"./uploads/{file.filename}")
+    return jsonify({"message": "NF-e enviada com sucesso!"}), 200
 
 @app.route('/api/carrinho/total', methods=['GET'])
 def get_total():
     total = sum(item['preco'] * item['quantidade'] for item in carrinho)
     return jsonify({'total': total}), 200
-
-if __name__ == '__main__':
-    app.run(debug=True)
 
 @app.route('/api/confirmarPagamento', methods=['POST'])
 def confirmar_pagamento():
@@ -196,6 +237,112 @@ def enviar_email(destinatario, pdf_path):
         server.starttls()
         server.login(remetente, senha)
         server.send_message(msg)
+
+# Dados simulados para exemplo
+pedidos = {
+    1: {
+        "products": [
+            {"name": "Produto 1", "price": 100.00},
+            {"name": "Produto 2", "price": 50.00}
+        ],
+        "orderTotal": 150.00,
+        "status": "em_transito"
+    }
+}
+
+historico_pedidos = {
+    1: [
+        {"id": 1, "date": "2025-04-01"},
+        {"id": 2, "date": "2025-03-30"}
+    ]
+}
+
+# API para Resumo do Pedido
+@app.route('/api/order-summary', methods=['GET'])
+def order_summary():
+    order_id = request.args.get('order_id', type=int)
+    if not order_id or order_id not in pedidos:
+        return jsonify({"error": "Pedido não encontrado."}), 404
+    return jsonify(pedidos[order_id]), 200
+
+# API para Histórico de Pedidos
+@app.route('/api/order-history', methods=['GET'])
+def order_history():
+    user_id = request.args.get('user_id', type=int)
+    if not user_id or user_id not in historico_pedidos:
+        return jsonify({"error": "Histórico de pedidos não encontrado."}), 404
+    return jsonify({"orders": historico_pedidos[user_id]}), 200
+
+# API para Status do Pedido
+@app.route('/api/order-status', methods=['GET'])
+def order_status():
+    order_id = request.args.get('order_id', type=int)
+    if not order_id or order_id not in pedidos:
+        return jsonify({"error": "Pedido não encontrado."}), 404
+    return jsonify({"status": pedidos[order_id]["status"]}), 200
+
+# API para URL da Nota Fiscal
+@app.route('/api/getInvoiceUrl', methods=['GET'])
+def get_invoice_url():
+    order_id = request.args.get('order_id', type=int)
+    if not order_id or order_id not in pedidos:
+        return jsonify({"error": "Nota Fiscal não encontrada."}), 404
+    pdf_url = f"http://localhost:5000/static/nfe/nota_fiscal_{order_id}.pdf"
+    return jsonify({"pdfUrl": pdf_url}), 200
+
+# Dados simulados para exemplo
+usuarios = {}
+
+# API para Cadastro de Usuário
+@app.route('/api/cadastro', methods=['POST'])
+def cadastro():
+    data = request.json
+    firstname = data.get('firstname')
+    lastname = data.get('lastname')
+    number = data.get('number')
+    email = data.get('email')
+    password = data.get('password')
+
+    if not firstname or not lastname or not number or not email or not password:
+        return jsonify({"success": False, "message": "Todos os campos são obrigatórios!"}), 400
+
+    if email in usuarios:
+        return jsonify({"success": False, "message": "E-mail já cadastrado!"}), 409
+
+    usuarios[email] = {
+        "firstname": firstname,
+        "lastname": lastname,
+        "number": number,
+        "password": password
+    }
+    return jsonify({"success": True, "message": "Usuário cadastrado com sucesso!"}), 201
+
+# API para Verificar Disponibilidade de E-mail
+@app.route('/api/verificar-email', methods=['GET'])
+def verificar_email():
+    email = request.args.get('email')
+    if not email:
+        return jsonify({"available": False, "message": "E-mail não informado!"}), 400
+
+    if email in usuarios:
+        return jsonify({"available": False, "message": "E-mail já cadastrado!"}), 409
+
+    return jsonify({"available": True, "message": "E-mail disponível para cadastro."}), 200
+
+# API para Login de Usuário (Opcional)
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.json
+    email = data.get('email')
+    password = data.get('password')
+
+    if not email or not password:
+        return jsonify({"success": False, "message": "E-mail e senha são obrigatórios!"}), 400
+
+    if email not in usuarios or usuarios[email]['password'] != password:
+        return jsonify({"success": False, "message": "Credenciais inválidas!"}), 401
+
+    return jsonify({"success": True, "message": "Login realizado com sucesso!", "token": "jwt_token_aqui"}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
