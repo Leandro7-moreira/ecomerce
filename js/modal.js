@@ -197,43 +197,45 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         // Função para redefinição de senha
-    document.getElementById('savePasswordButton').addEventListener('click', function () {
-        const email = document.getElementById('email').value;
-        const confirmEmail = document.getElementById('confirmEmail').value;
-        const newPassword = document.getElementById('newPassword').value;
-        const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+        document.getElementById('savePasswordButton').addEventListener('click', function () {
+            const email = document.getElementById('email').value;
+            const confirmEmail = document.getElementById('confirmEmail').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
 
-        // Validação dos campos
-        if (!email || !confirmEmail || !newPassword || !confirmNewPassword) {
-            alert('Por favor, preencha todos os campos.');
-            return;
+            // Validação dos campos
+            if (!email || !confirmEmail || !newPassword || !confirmNewPassword) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            if (email !== confirmEmail) {
+                alert('Os e-mails não correspondem.');
+                return;
+            }
+
+            if (newPassword !== confirmNewPassword) {
+                alert('As senhas não correspondem.');
+                return;
+            }
+
+            // Validação da senha com regex
+            const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordRegex.test(newPassword)) {
+                alert('A senha deve ter pelo menos 8 caracteres, incluindo letras, números e caracteres especiais.');
+                return;
+            }
+
+            // Exibe uma mensagem de sucesso (simulação de salvamento)
+            alert('Sua senha foi redefinida com sucesso!');
+            closeModal(); // Fecha o modal
+        });
+
+        // Adiciona evento ao botão de fechar (X) no modal de redefinição de senha
+        const resetPasswordCloseBtn = document.querySelector('#resetPasswordModal .closeBtn');
+        if (resetPasswordCloseBtn) {
+            resetPasswordCloseBtn.addEventListener('click', closeModal);
         }
-
-        if (email !== confirmEmail) {
-            alert('Os e-mails não correspondem.');
-            return;
-        }
-
-        if (newPassword !== confirmNewPassword) {
-            alert('As senhas não correspondem.');
-            return;
-        }
-
-        if (newPassword.length < 6) {
-            alert('A nova senha deve ter pelo menos 6 caracteres.');
-            return;
-        }
-
-        // Exibe uma mensagem de sucesso (simulação de salvamento)
-        alert('Sua senha foi redefinida com sucesso!');
-        closeModal(); // Fecha o modal
-    });
-
-    // Adiciona evento ao botão de fechar (X) no modal de redefinição de senha
-    const resetPasswordCloseBtn = document.querySelector('#resetPasswordModal .closeBtn');
-    if (resetPasswordCloseBtn) {
-        resetPasswordCloseBtn.addEventListener('click', closeModal);
-    }
 
         // Botão de login
         const loginButton = document.createElement('button');

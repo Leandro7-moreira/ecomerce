@@ -78,10 +78,9 @@
     margin-bottom: 20px; /* Espaçamento inferior */
 }
 
-/* Estilos para os campos de entrada de email e senha */
-#resetPasswordModal input[type="email"], /* Campo de entrada de email no modal */
-#resetPasswordModal input[type="password"], /* Campo de entrada de senha no modal */
-.container .input-box input { /* Campos de entrada dentro do contêiner */
+/* Estilos para os campos de entrada de email e senha no modal de redefinição de senha */
+#resetPasswordModal input[type="email"],
+#resetPasswordModal input[type="password"] {
     width: 100%; /* Largura total do campo */
     padding: 12px; /* Espaçamento interno */
     border: 1px solid #f8bbd0; /* Cor da borda */
@@ -89,6 +88,7 @@
     font-size: 1em; /* Tamanho da fonte */
     box-sizing: border-box; /* Inclui padding e borda no cálculo da largura */
     transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transição suave para borda e sombra */
+    margin-bottom: 15px; /* Espaçamento inferior entre os inputs */
 }
 
 #resetPasswordModal input[type="email"]:focus,
