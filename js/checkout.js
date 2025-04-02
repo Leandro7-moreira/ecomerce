@@ -23,7 +23,7 @@ function carregarInformacoesDoCarrinho() {
             const produtoDiv = document.createElement('div');
             produtoDiv.innerHTML = `
                 <div class="product">
-                    <img src="${item.imagem}" alt="${item.nome}" style="width: 80px; height: auto;" />
+                    <img src="${item.imagem[0]}" alt="${item.nome}" style="width: 80px; height: auto;" />
                     <div class="info">
                         <div class="name">${item.nome}</div>
                         <div class="category">${item.descricao}</div>

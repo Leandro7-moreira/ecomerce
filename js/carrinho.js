@@ -13,7 +13,9 @@ function carregarCarrinho() {
             linha.innerHTML = `
                 <td>
                     <div class="product">
-                        <img src="${item.imagem}" alt="${item.nome}" />
+                        <div class="product-images">
+                            <img src="${item.imagem[0]}" alt="${item.nome}" style="width: 80px; height: auto;" />
+                        </div>
                         <div class="info">
                             <div class="name">${item.nome}</div>
                             <div class="category">${item.descricao}</div>

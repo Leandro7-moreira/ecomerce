@@ -180,15 +180,23 @@ body {
 }
 
 /* Estilo para a lista de produtos */
-#products-list .product {
-    display: flex; /* Para alinhar os itens em linha */
-    align-items: center; /* Centraliza o conteúdo verticalmente */
-    justify-content: space-between; /* Espaça os elementos dentro do item */
-    padding: 10px 0; /* Adiciona espaçamento interno */
-    border-bottom: 1px solid #F8BBD0; /* Adiciona uma linha inferior para separar os produtos */
+.product {
+    display: flex; /* Exibe os produtos em linha */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    margin-bottom: 15px; /* Espaçamento inferior entre os produtos */
+    padding: 10px 0; /* Espaçamento interno */
+    border-bottom: 1px solid #F8BBD0; /* Linha separadora entre os produtos */
 }
 
-/* Estilo para a informação do produto */
+.product img {
+    width: 80px; /* Define a largura da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-right: 15px; /* Espaçamento entre a imagem e as informações */
+    object-fit: contain; /* Ajusta a imagem sem distorção */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
+}
+
 #products-list .product .name {
     font-size: 16px; /* Define o tamanho da fonte do nome do produto */
     font-weight: bold; /* Negrito para o nome */
@@ -353,8 +361,7 @@ body {
     background-color: #ffffff; /* Fundo do conteiner */
     border: none; /* Borda do conteiner */
     border-radius: 5px; /* Bordas arredondadas */
-    margin-bottom: 20px; /* Margem inferior para espaçar de outros elementos */
-    
+    margin-bottom: 20px; /* Margem inferior para espaçar de outros elementos */    
 }
 
 /* Estilo para o título da confirmação do pedido */
@@ -372,43 +379,59 @@ body {
 
 /* Exibe cada produto com um layout flexível, alinha o conteúdo centralmente e coloca uma borda inferior */
 #final-products-list .product {
-    display: flex; /* Alinha os itens em linha horizontal */
-    align-items: center; /* Centraliza verticalmente o conteúdo dentro do container */
-    border-bottom: 1px solid #F8BBD0; /* Adiciona uma borda inferior para separar os itens */
-    padding: 15px 0; /* Adiciona espaçamento interno acima e abaixo */
-    justify-content: center; /* Centraliza horizontalmente os itens dentro do produto */
+    display: flex; /* Alinha os itens em linha */
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    margin-bottom: 15px; /* Espaçamento inferior entre os produtos */
+    padding: 10px; /* Espaçamento interno */
+    border-bottom: 1px solid #F8BBD0; /* Linha separadora entre os produtos */
+    background-color: #ffffff; /* Fundo branco para destacar os produtos */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve para destaque */
 }
 
-/* Margem para separar a imagem do conteúdo e um efeito arredondado */
 #final-products-list img {
-    margin-right: 15px; /* Adiciona espaço à direita da imagem */
-    border-radius: 5px; /* Arredonda os cantos da imagem */
+    width: 80px; /* Define a largura da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-right: 15px; /* Espaçamento entre a imagem e as informações */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
+    object-fit: contain; /* Ajusta a imagem sem distorção */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve para as imagens */
 }
 
 /* O elemento "info" ocupa o restante do espaço flexível */
 #final-products-list .info {
     flex: 1; /* Faz o container ocupar todo o espaço disponível restante */
+    display: flex; /* Alinha os itens em coluna */
+    flex-direction: column; /* Organiza os itens verticalmente */
 }
 
 /* Aumenta o tamanho da fonte do nome e aplica negrito e cor personalizada */
 #final-products-list .name {
-    font-size: 16px; /* Define o tamanho da fonte */
+    font-size: 18px; /* Define o tamanho da fonte */
     font-weight: bold; /* Aplica negrito ao nome do produto */
-    color: #000; /* Cor */
+    color: #FF7043; /* Cor principal */
+    margin-bottom: 5px; /* Espaçamento inferior */
 }
 
 /* Define o estilo da categoria com fonte menor e cor secundária */
 #final-products-list .category {
-    font-size: 14px; /* Tamanho menor da fonte para a categoria */
+    font-size: 12px; /* Tamanho menor da fonte para a descrição */
     color: #757575; /* Cor cinza claro */
-    margin: 5px 0; /* Espaçamento acima e abaixo da categoria */
+    margin-bottom: 10px; /* Espaçamento inferior */
 }
 
 /* Define a aparência da quantidade e do total, utilizando uma cor mais chamativa */
 #final-products-list .quantity, 
 #final-products-list .total {
-    font-size: 14px; /* Tamanho da fonte consistente com a categoria */
-    color: #000; /* Cor  */
+    font-size: 14px; /* Tamanho da fonte consistente */
+    color: #333; /* Cor escura para contraste */
+    margin-bottom: 5px; /* Espaçamento inferior */
+}
+
+/* Valor total com destaque */
+#final-products-list .total {
+    font-weight: bold; /* Negrito para destacar o valor total */
+    color: #FF7043; /* Cor principal */
 }
 
 /* Aplica um fundo claro e bordas arredondadas aos blocos de endereço e pagamento */
@@ -436,13 +459,18 @@ body {
 .product {
     display: flex; /* Exibe os produtos em linha */
     align-items: center; /* Centraliza os itens verticalmente */
-    margin-bottom: 10px; /* Espaçamento inferior entre os produtos */
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    margin-bottom: 15px; /* Espaçamento inferior entre os produtos */
+    padding: 10px 0; /* Espaçamento interno */
+    border-bottom: 1px solid #F8BBD0; /* Linha separadora entre os produtos */
 }
 
 .product img {
-    width: 50px; /* Define a largura da imagem para 50px */
+    width: 80px; /* Define a largura da imagem */
     height: auto; /* Mantém a proporção da imagem */
-    margin-right: 10px; /* Espaçamento entre a imagem e as informações */
+    margin-right: 15px; /* Espaçamento entre a imagem e as informações */
+    object-fit: contain; /* Ajusta a imagem sem distorção */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
 }
 
 .product-info {
@@ -485,6 +513,24 @@ body {
     .btn {
         font-size: 14px; /* Ajuste no tamanho da fonte para botões */
         padding: 8px 16px; /* Menos padding em botões */
+    }
+
+    .product img {
+        width: 60px; /* Reduz a largura da imagem em telas menores */
+        height: auto; /* Mantém a proporção da imagem */
+    }
+
+    #final-products-list .product {
+        flex-direction: column; /* Alinha os itens em coluna */
+        align-items: flex-start; /* Alinha os itens à esquerda */
+    }
+
+    #final-products-list img {
+        margin-bottom: 10px; /* Adiciona espaçamento inferior entre a imagem e as informações */
+    }
+
+    #final-products-list .info {
+        align-items: flex-start; /* Alinha o texto à esquerda */
     }
 }
 

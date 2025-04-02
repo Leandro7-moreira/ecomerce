@@ -297,6 +297,23 @@ body.modal-open .my_account_info:hover .dropdown-menu {
     right: 0px; /* Posiciona o botão 'Próximo' à direita */
 }
 
+.product-images {
+    display: flex; /* Usa flexbox para alinhar as imagens */
+    justify-content: center; /* Centraliza as imagens horizontalmente */
+    align-items: center; /* Centraliza as imagens verticalmente */
+    width: 100%; /* Garante que o contêiner ocupe toda a largura disponível */
+    height: auto; /* Ajusta a altura automaticamente */
+    overflow: hidden; /* Oculta qualquer conteúdo que ultrapasse os limites do contêiner */
+}
+
+.product-images img {
+    display: block; /* Garante que a imagem seja exibida como um bloco */
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    object-fit: contain; /* Ajusta a imagem para caber no contêiner sem distorção */
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+}
+
 /* Quem Somos */
 .quem-somos {
     padding: 100px 8%; /* Espaçamento interno superior e inferior de 100px e laterais de 8% */
@@ -722,6 +739,11 @@ body.modal-open .my_account_info:hover .dropdown-menu {
     .modal-content {
         margin: 20% auto;
         width: 95%;
+    }
+
+    .product-images img {
+        max-width: 100%; /* Garante que a imagem ocupe toda a largura disponível */
+        height: auto; /* Mantém a proporção da imagem */
     }
 }
 
