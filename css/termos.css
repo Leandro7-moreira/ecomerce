@@ -1,76 +1,116 @@
 /* Estilização geral do corpo */
 body {
-    font-family: 'Poppins', sans-serif; /* Define a fonte padrão */
+    font-family: 'Poppins', sans-serif; /* Fonte moderna e legível */
     line-height: 1.6; /* Espaçamento entre linhas */
-    margin: 0; /* Remove a margem padrão */
-    padding: 0; /* Remove o padding padrão */
-    background: linear-gradient(135deg, #E0F7FA, #f4f4f48e); /* Degradê do azul claro para o cinza */
-    color: #333; /* Cor do texto */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #E0F7FA, #B2EBF2); /* Fundo com degradê suave */
+    color: #333; /* Cor padrão do texto */
 }
 
 /* Estilo do cabeçalho */
 header {
     color: #000; /* Cor do texto do cabeçalho */
-    padding: 20px; /* Espaçamento interno do cabeçalho */
-    text-align: center; /* Centraliza o texto do cabeçalho */
+    padding: 20px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
 }
 
 /* Estilo do contêiner */
 .container {
-    padding: 50px; /* Reduzindo o padding para 30px */
-    max-width: 1750px; /* Definindo uma largura máxima */
-    background-color: #ffffff; /* Cor de fundo do contêiner */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
-    margin: 20px auto; /* Margem externa para espaçamento em relação ao restante da página */
-    border-radius: 10px; /* Bordas arredondadas para um visual mais suave */
+    padding: 30px; /* Espaçamento interno */
+    padding-bottom: 100px; /* Adiciona espaço extra na parte inferior */
+    max-width: 1200px; /* Largura máxima do contêiner */
+    background-color: #ffffff; /* Fundo branco */
+    box-shadow: 0 4px 15px rgb(255, 112, 67, 0.8); /* Sombra leve para destaque */
+    margin: 20px auto; /* Centraliza o contêiner */
+    border-radius: 10px; /* Bordas arredondadas */
 }
 
-/* Estilo dos títulos principais */
+/* Estilo dos títulos */
 h1 {
-    font-size: 2em; /* Tamanho da fonte para o título principal */
-    margin-bottom: 10px; /* Espaçamento inferior do título */
+    font-size: 2.5em; /* Tamanho do título principal */
+    color: #FF7043; /* Cor de destaque */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    text-align: center; /* Centraliza o título */
 }
 
 /* Estilo dos subtítulos */
 h2 {
-    font-size: 1.5em; /* Tamanho da fonte para subtítulos */
-    margin-top: 20px; /* Espaçamento superior dos subtítulos */
-    margin-bottom: 10px; /* Espaçamento inferior dos subtítulos */
+    font-size: 2em; /* Tamanho dos subtítulos */
+    color: #FF7043; /* Cor de destaque para os subtítulos */
+    margin-top: 20px; /* Espaçamento superior */
+    margin-bottom: 15px; /* Espaçamento inferior */
 }
 
-/* Estilo dos subtítulos de terceiro nível */
 h3 {
-    font-size: 1.2em; /* Tamanho da fonte para subtítulos de terceiro nível */
-    margin-top: 15px; /* Espaçamento superior dos subtítulos de terceiro nível */
-    margin-bottom: 5px; /* Espaçamento inferior dos subtítulos de terceiro nível */
+    font-size: 1.5em; /* Tamanho intermediário */
+    color: #FF7043; /* Cor mais escura */
+    margin-top: 15px; /* Espaçamento superior */
+    margin-bottom: 10px; /* Espaçamento inferior */
 }
 
 /* Estilo dos parágrafos */
 p {
-    margin: 15px 0; /* Margem superior e inferior dos parágrafos */
-    text-align: justify; /* Justifica o texto dos parágrafos */
+    margin: 15px 0; /* Espaçamento entre parágrafos */
+    text-align: justify; /* Justifica o texto */
+    font-size: 1.1em; /* Tamanho da fonte */
+    color: #555; /* Cor mais suave */
+    line-height: 1.8; /* Aumenta o espaçamento entre linhas */
 }
 
-/* Estilo das listas ordenadas */
+/* Estilo das listas */
 ol {
-    margin: 10px 0 20px 20px; /* Margem para a lista ordenada (superior, inferior, esquerda) */
+    margin: 10px 0 20px 20px; /* Margem para a lista ordenada */
+    padding-left: 20px; /* Espaçamento interno à esquerda */
+    color: #333; /* Cor do texto */
+    font-size: 1.1em; /* Tamanho da fonte */
+}
+
+ol li {
+    margin-bottom: 10px; /* Espaçamento entre os itens da lista */
 }
 
 /* Estilo do rodapé */
 footer {
-    color: #000; /* Cor do texto do rodapé */
-    text-align: center; /* Centraliza o texto do rodapé */
-    padding: 30px; /* Espaçamento interno do rodapé */
-    position: relative; /* Posicionamento relativo para o rodapé */
-    bottom: 0; /* Alinha o rodapé ao fundo da página */
-    width: 100%; /* Largura total do rodapé */
-    margin-top: 20px; /* Margem superior do rodapé */
-    margin-left: 750px; /* Ajuste o valor conforme necessário */
+    color: #333; /* Cor do texto do rodapé */
+    text-align: center; /* Centraliza o texto */
+    padding: 20px; /* Espaçamento interno */
+    background-color: #E0F7FA; /* Fundo azul claro */
+    position: fixed; /* Fixa o rodapé na parte inferior */
+    bottom: 0; /* Alinha ao fundo */
+    width: 100%; /* Largura total */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve no topo */
+    font-size: 0.9em; /* Tamanho menor da fonte */
 }
 
-/* Estilo adicional para a data de atualização */
-header p {
-    margin: 0; /* Remove a margem padrão */
-    font-size: 1em; /* Tamanho da fonte para a data de atualização */
-    text-align: center; /* Centraliza a data de atualização */
+/* Estilo para a data de atualização no rodapé */
+footer .update-date {
+    display: block; /* Garante que a data fique em uma linha separada */
+    margin-top: 10px; /* Espaçamento superior */
+    font-size: 0.8em; /* Tamanho menor da fonte */
+    color: #757575; /* Cor cinza claro */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px; /* Reduz o espaçamento interno */
+        max-width: 90%; /* Ajusta a largura máxima */
+    }
+
+    h1 {
+        font-size: 2em; /* Reduz o tamanho do título principal */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Reduz o tamanho dos subtítulos */
+    }
+
+    p {
+        font-size: 1em; /* Ajusta o tamanho da fonte */
+    }
+
+    footer {
+        font-size: 0.8em; /* Reduz o tamanho do texto no rodapé */
+    }
 }
