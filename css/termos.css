@@ -18,12 +18,12 @@ header {
 /* Estilo do contêiner */
 .container {
     padding: 30px; /* Espaçamento interno */
-    padding-bottom: 100px; /* Adiciona espaço extra na parte inferior */
     max-width: 1200px; /* Largura máxima do contêiner */
     background-color: #ffffff; /* Fundo branco */
     box-shadow: 0 4px 15px rgb(255, 112, 67, 0.8); /* Sombra leve para destaque */
     margin: 20px auto; /* Centraliza o contêiner */
     border-radius: 10px; /* Bordas arredondadas */
+    padding-bottom: 50px; /* Espaçamento inferior para separar do rodapé */
 }
 
 /* Estilo dos títulos */
@@ -76,11 +76,11 @@ footer {
     text-align: center; /* Centraliza o texto */
     padding: 20px; /* Espaçamento interno */
     background-color: #E0F7FA; /* Fundo azul claro */
-    position: fixed; /* Fixa o rodapé na parte inferior */
-    bottom: 0; /* Alinha ao fundo */
+    position: relative; /* Posição relativa para evitar sobreposição */
     width: 100%; /* Largura total */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve no topo */
     font-size: 0.9em; /* Tamanho menor da fonte */
+    margin-top: 20px; /* Espaçamento superior para separar do contêiner */
 }
 
 /* Estilo para a data de atualização no rodapé */
